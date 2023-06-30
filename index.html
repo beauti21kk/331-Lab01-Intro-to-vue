@@ -22,8 +22,8 @@
         </div>
         <div class="product-info">
             <a :href="url"><h1>{{product}}</h1></a>
-            <p>In Stock</p>
-            <p>Out of Stock</p>
+            <p v-if="inStock">In Stock</p>
+            <p v-else="inStock">Out of Stock</p>
             <h2>{{description}}</h2>
         </div>
     </div>

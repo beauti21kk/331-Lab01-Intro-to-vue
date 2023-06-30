@@ -21,6 +21,7 @@ createApp({
         const sizes = ref([
             'S', 'M', 'L'
         ])
+        const cart = ref(0)
         return {
             product,
             url,
@@ -31,7 +32,8 @@ createApp({
             sale,
             details,
             variants,
-            sizes
+            sizes,
+            cart
         }
     }
 }).mount('#app')

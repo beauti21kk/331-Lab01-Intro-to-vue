@@ -7,7 +7,8 @@ createApp({
         const url = ref('https://www.camt.cmu.ac.th')
         const description = ref('This product has many colors.')
         const inStock = ref(true)
-        const inventory = ref(100)
+        const inventory = ref(1)
+        const sale = ref(true)
         return {
             product,
             url,

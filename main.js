@@ -28,6 +28,17 @@ createApp({
         function updateImage(variantImage){
             image.value = variantImage
         }
+        function toggle(button){
+            if(inventory > 10){
+                button.value = "In Stock"
+            }
+            else if(inventory <= 10 && inventory > 0){
+                button.value = "Almost out of Stock"
+            }
+            else{
+                button.value = "Not On Sale"
+            }
+        }
         return {
             product,
             url,

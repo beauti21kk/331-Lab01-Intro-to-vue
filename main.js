@@ -6,7 +6,7 @@ createApp({
         const image = ref('./assets/images/socks_green.jpg')
         const url = ref('https://www.camt.cmu.ac.th')
         const description = ref('This product has many colors.')
-        const inStock = ref(true)
+        const inStock = ref(false)
         const inventory = ref(20)
         const sale = ref(true)
         const details = ref([

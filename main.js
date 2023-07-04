@@ -7,7 +7,7 @@ createApp({
         const url = ref('https://www.camt.cmu.ac.th')
         const description = ref('This product has many colors.')
         const inStock = ref(true)
-        const inventory = ref(1)
+        const inventory = ref(20)
         const sale = ref(true)
         const details = ref([
             '50% cotton',
@@ -28,16 +28,8 @@ createApp({
         function updateImage(variantImage){
             image.value = variantImage
         }
-        function toggle(button){
-            if(inventory > 10){
-                button.value = "In Stock"
-            }
-            else if(inventory <= 10 && inventory > 0){
-                button.value = "Almost out of Stock"
-            }
-            else{
-                button.value = "Not On Sale"
-            }
+        function toggle(){
+            inStock.value = !inStock.value
         }
         return {
             product,
@@ -52,7 +44,8 @@ createApp({
             sizes,
             cart,
             addToCart,
-            updateImage
+            updateImage,
+            toggle
         }
     }
 }).mount('#app')

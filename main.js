@@ -33,8 +33,14 @@ createApp({
         function addToCart(){
             cart.value +=1
         }
+        const onSale = ref(true);
         const title = computed(() =>{
-            return brand.value + ' ' + product.value
+            if(onSale.value == true){
+                return brand.value + ' ' + product.value + " is ON SALE!"
+            }
+            else{
+                return brand.value + ' ' + product.value
+            }
         })
         function updateImage(variantImage){
             image.value = variantImage

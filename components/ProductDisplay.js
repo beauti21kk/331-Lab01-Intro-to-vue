@@ -21,6 +21,7 @@ const productDisplay = {
 
             </div>
             <button class="button" :disabled='!inStock' @click="addToCart" :class="{disabledButton: !inStock}">Add To Cart</button>
+            <button class="button" @click="removeCart">Remove</button>
             </div>
         </div>
     `,
@@ -64,6 +65,9 @@ const productDisplay = {
         function addToCart() {
             emit('add-to-cart', variants.value[selectedVariant.value].id)
         }
+        function removeCart(){
+            emit('remove-from-cart', cart.value)
+        }
         const title =computed(() => {
             return brand.value + ' ' + product.value
         })
@@ -78,6 +82,7 @@ const productDisplay = {
             details,
             variants,
             addToCart,
+            removeCart,
             updateImage,
             updateVariant,
             shipping

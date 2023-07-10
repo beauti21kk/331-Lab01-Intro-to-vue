@@ -6,12 +6,12 @@ const productDetails = {
         <li v-for="detail in details">{{detail}}</li>
         </ul>
     `,props :{
-        detail: Array
+        details: Array
     },
     setup(props){
-        const detail = ref(props.detail)
+        const details = ref(props.details)
         return{
-            detail
+            details
         }
     }
 }

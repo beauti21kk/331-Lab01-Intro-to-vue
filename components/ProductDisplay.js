@@ -24,7 +24,10 @@ const productDisplay = {
             </div>
         </div>
     `,
-    setup() {
+    pros:{
+        premium: Boolean
+    },
+    setup(pros) {
         const product = ref('Boots')
         const brand = ref('SE 331')
         // const image = ref('./assets/images/socks_green.jpg')
@@ -68,7 +71,8 @@ const productDisplay = {
             variants,
             addToCart,
             updateImage,
-            updateVariant
+            updateVariant,
+            shipping
         }
     }
 }

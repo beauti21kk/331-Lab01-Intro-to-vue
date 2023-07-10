@@ -14,9 +14,7 @@
     <div id="app">
         <div class="nav-bar"></div>
         <div class="cart">Cart({{ cart}})</div>
-        <product-display></product-display>
-        <product-display></product-display> 
-        <product-display></product-display> <!--Boots 3 Times-->
+        <product-display :premium="premium"></product-display>
         <button class="button" @click="toggle">Toggle</button>
         </div>
     </div>

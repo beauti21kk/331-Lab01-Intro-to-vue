@@ -20,7 +20,7 @@ const reviewForm = {
 
     <input class="button" type="submit" value="Submit">
     </form>`,
-    setup() {
+    setup(props,{emit}) {
         const form = reactive({
             name: '',
             review: '',
@@ -42,7 +42,8 @@ const reviewForm = {
             form.rating = null
         }
         return {
-            form
+            form,
+            onSubmit
         }
     }
 }

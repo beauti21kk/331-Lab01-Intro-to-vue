@@ -1,7 +1,6 @@
 const productDisplay = {
 
     template:
-        /*html*/
         `
     <div class="product-display">
             <div class="product-container">
@@ -25,12 +24,12 @@ const productDisplay = {
             </div>
         </div>
     `,
-    pros:{
+    props:{
         premium: Boolean
     },
-    setup(pros) {
+    setup(props) {
         const shipping = computed(()=>{
-            if (pros.premium){
+            if (props.premium){
                 return 'Free'
             }
             else {

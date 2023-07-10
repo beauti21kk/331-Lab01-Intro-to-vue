@@ -23,7 +23,7 @@ const productDisplay = {
             <button class="button" :disabled='!inStock' @click="addToCart" :class="{disabledButton: !inStock}">Add To Cart</button>
             <button class="button" @click="removeCart">Remove</button>
             </div>
-            <review-form></review-form>
+            <review-form @review-submitted="addReview"></review-form>
         </div>
     `,
     props:{
@@ -63,6 +63,10 @@ const productDisplay = {
         const inStock = computed(() => {
             return variants.value[selectedVariant.value].quantity
         })
+        const reviews = ref([])
+        function addReview(review){
+            reviews.value.push(review)
+        }
         function addToCart() {
             emit('add-to-cart', variants.value[selectedVariant.value].id)
         }
@@ -86,7 +90,9 @@ const productDisplay = {
             removeCart,
             updateImage,
             updateVariant,
-            shipping
+            shipping,
+            reviews,
+            addReview
         }
     }
 }

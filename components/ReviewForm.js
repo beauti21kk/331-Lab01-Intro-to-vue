@@ -42,7 +42,7 @@ const reviewForm = {
             form.rating = null
         }
         return {
-            form,
+            ...toRefs(form),
             onSubmit
         }
     }

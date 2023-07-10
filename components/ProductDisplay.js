@@ -23,6 +23,7 @@ const productDisplay = {
             <button class="button" :disabled='!inStock' @click="addToCart" :class="{disabledButton: !inStock}">Add To Cart</button>
             <button class="button" @click="removeCart">Remove</button>
             </div>
+            <review-list :reviews="reviews"></review-list>
             <review-form @review-submitted="addReview"></review-form>
         </div>
     `,

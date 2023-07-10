@@ -5,17 +5,22 @@ const productDisplay = {
     <div class="product-display">
             <div class="product-container">
                 <div class="product-image">
-                    <img :src="image">
+                <img :src="image" :class="{ 'out-of-stock-img' : !inStock}">
                 </div>
             </div>
             <div class="product-info">
-                <h1>{{title}}</h1>
+                <a :href="url"><h1>{{title}}</h1></a>
+                <h2>{{description}}</h2>
                 <p v-if="inventory > 10">In Stock</p>
                 <p v-else-if="inventory <= 10 && inventory > 0">Almost out of Stock</p>
                 <p v-else>Out of Stock</p>
+                <p v-if="sale">On Sale</p>
                 <p>Shipping: {{shipping}}</p>
                 <ul>
+                    <p>Detail:</p>
                     <li v-for="detail in details">{{detail}}</li>
+                    <p>Size:</p>
+                    <li v-for="size in sizes">{{size}}</li>
                 </ul>
                 <div v-for="(variant,index) in variants" :key="variant.id"@mouseover="updateVariant(index)" class="color-circle" :style="{backgroundColor: variant.color}">
 
@@ -42,9 +47,15 @@ const productDisplay = {
         })
         const product = ref('Boots')
         const brand = ref('SE 331')
+        const description = ref('This product has many colors.')
+        const url = ref('https://www.camt.cmu.ac.th')
+        const sale = ref(true)
         // const image = ref('./assets/images/socks_green.jpg')
         // const inStock = ref(true)
-        const inventory = ref(100)
+        // const inventory = ref(100)
+        const inventory = computed(() =>{
+            return variants.value[selectedVariant.value].quantity
+         })
         const details = ref([
             '50% cotton',
             '30% wool',
@@ -62,6 +73,9 @@ const productDisplay = {
         const image = computed(() => {
             return variants.value[selectedVariant.value].image
         })
+        const sizes = ref([
+            'S', 'M', 'L'
+        ])
         const inStock = computed(() => {
             return variants.value[selectedVariant.value].quantity
         })
@@ -81,9 +95,20 @@ const productDisplay = {
         function updateImage(variantImage) {
             image.value = variantImage
         }
+        function toggle(){
+            if(inStock.value === false) {
+                variants.value[selectedVariant.value].quantity = 100
+            
+            }
+            else{
+                variants.value[selectedVariant.value].quantity = 0
+            }
+        }
         return {
             title,
             image,
+            description,
+            url,
             inStock,
             inventory,
             details,
@@ -94,7 +119,11 @@ const productDisplay = {
             updateVariant,
             shipping,
             reviews,
-            addReview
+            addReview,
+            sizes,
+            toggle,
+            cart,
+            sale
         }
     }
 }

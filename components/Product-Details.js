@@ -6,7 +6,7 @@ const productDetails = {
         <li v-for="detail in details">{{detail}}</li>
         </ul>
     `,props :{
-        premium: Array
+        detail: Array
     },
     setup(props){
         const detail = ref(props.detail)

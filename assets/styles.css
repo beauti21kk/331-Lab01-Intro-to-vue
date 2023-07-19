@@ -180,3 +180,12 @@ ul {
     width: 90%;
   }
 }
+
+input[type="checkbox"]
+{
+    float: left;
+    width: 20px;  
+    flex: none;
+
+}
+

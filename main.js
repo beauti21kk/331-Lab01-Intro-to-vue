@@ -3,7 +3,7 @@ const { createApp, ref, computed, reactive, toRefs} = Vue
 const app = createApp({
     setup(){
         const cart = ref([])
-        const premium = ref(true) // If change 'false', shipping is 30 (not free)
+        const premium = ref(false) // If change 'false', shipping is 30 (not free)
         function updateCart(id) {
             cart.value.push(id)
         }

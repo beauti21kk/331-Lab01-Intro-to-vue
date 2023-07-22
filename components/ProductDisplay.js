@@ -1,6 +1,7 @@
 const productDisplay = {
 
     template:
+        /*html*/
         `
     <div class="product-display">
             <div class="product-container">
@@ -25,6 +26,7 @@ const productDisplay = {
                 <div v-for="(variant,index) in variants" :key="variant.id"@mouseover="updateVariant(index)" class="color-circle" :style="{backgroundColor: variant.color}">
 
             </div>
+            <div>
             <button class="button" :disabled='!inStock' @click="addToCart" :class="{disabledButton: !inStock}">Add To Cart</button>
             <button class="button" @click="removeCart">Remove</button>
             <button class="button" @click="toggle">Toggle</button>
@@ -52,10 +54,10 @@ const productDisplay = {
         const sale = ref(true)
         // const image = ref('./assets/images/socks_green.jpg')
         // const inStock = ref(true)
-        // const inventory = ref(100)
-        const inventory = computed(() =>{
+        const inventory = ref(100)
+        /*const inventory = computed(() =>{
             return variants.value[selectedVariant.value].quantity
-         })
+         })*/
         const details = ref([
             '50% cotton',
             '30% wool',
@@ -66,7 +68,7 @@ const productDisplay = {
             { id: 2235, color: 'blue', image:'./assets/images/socks_blue.jpg', quantity: 30},
         ])
         const selectedVariant = ref(0)
-        const cart = ref(0)
+        const cart = ref([])
         function updateVariant(index) {
             selectedVariant.value = index;
         }
@@ -89,14 +91,14 @@ const productDisplay = {
         function removeCart(){
             emit('remove-from-cart', variants.value[selectedVariant.value].id)
         }
-        const title =computed(() => {
+        const title = computed(() => {
             return brand.value + ' ' + product.value
         })
         function updateImage(variantImage) {
             image.value = variantImage
         }
         function toggle(){
-            if(inStock.value === false) {
+            if(inStock.value == false) {
                 variants.value[selectedVariant.value].quantity = 100
             
             }

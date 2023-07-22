@@ -8,8 +8,12 @@ const app = createApp({
             cart.value.push(id)
         }
         function removeCart(id){
-            cart.value.pop(id)
+            const index = cart.value.indexOf(id);
+            if (index !== -1) {
+                cart.value.splice(index, 1);
+            }
         }
+        
         return {
             cart,
             premium,
@@ -25,11 +29,13 @@ const app = createApp({
                 return acc;
             }, {})
       ),
-        }
+
+    }
     }
 })
 
 app.component('product-display', productDisplay)
+app.component('product-detail', productDetails)
 app.component('review-form', reviewForm)
 app.component('review-list', reviewList)
 app.mount('#app')
